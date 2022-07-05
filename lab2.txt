@@ -1,0 +1,193 @@
+package com.example.myapplication_4mt19cs002001_lab2;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.renderscript.Element;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,badd,bmin,bmul,bdiv,beq,bclear,bdot;
+    EditText e1;
+    float f1,f2;
+    boolean add,sub,mul,div;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        b1=(Button) findViewById(R.id.button2);
+        b2=(Button) findViewById(R.id.button3);
+        b3=(Button) findViewById(R.id.button4);
+        b4=(Button) findViewById(R.id.button6);
+        b5=(Button) findViewById(R.id.button7);
+        b6=(Button) findViewById(R.id.button8);
+        b7=(Button) findViewById(R.id.button10);
+        b8=(Button) findViewById(R.id.button11);
+        b9=(Button) findViewById(R.id.button12);
+        b0=(Button) findViewById(R.id.button16);
+
+        badd=(Button) findViewById(R.id.button5);
+        bmin=(Button) findViewById(R.id.button9);
+        bmul=(Button) findViewById(R.id.button13);
+        bdiv=(Button) findViewById(R.id.button18);
+        beq=(Button) findViewById(R.id.button17);
+        bclear=(Button) findViewById(R.id.button14);
+        bdot=(Button) findViewById(R.id.button15);
+
+        e1=(EditText) findViewById(R.id.editTextTextPersonName2);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText(e1.getText()+"1");
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText(e1.getText()+"2");
+            }
+        });
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText(e1.getText()+"3");
+            }
+        });
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText(e1.getText()+"4");
+            }
+        });
+        b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText(e1.getText()+"5");
+            }
+        });
+        b6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText(e1.getText()+"6");
+            }
+        });
+        b7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText(e1.getText()+"7");
+            }
+        });
+        b8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText(e1.getText()+"8");
+            }
+        });
+        b9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText(e1.getText()+"9");
+            }
+        });
+        b0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText(e1.getText()+"0");
+            }
+        });
+        bclear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText("");
+            }
+        });
+        bdot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setText(e1.getText()+".");
+            }
+        });
+
+        badd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(e1==null)
+                    e1.setText("");
+                 else {
+                        f1=Float.parseFloat(e1.getText()+" ");
+                        add=true;
+                        e1.setText(null);
+                    }
+
+
+            }
+        });
+        bmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(e1==null)
+                    e1.setText("");
+                    else{
+                        f1=Float.parseFloat(e1.getText()+" ");
+                        sub=true;
+                        e1.setText(null);
+                    }
+
+
+            }
+        });
+        bmul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(e1==null)
+                    e1.setText("");
+                    else{
+                        f1=Float.parseFloat(e1.getText()+" ");
+                        mul=true;
+                        e1.setText(null);
+                    }
+
+
+            }
+        });
+        bdiv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(e1==null)
+                    e1.setText("");
+                    else{
+                        f1=Float.parseFloat(e1.getText()+" ");
+                        div=true;
+                        e1.setText(null);
+                    }
+
+
+            }
+        });
+
+        beq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                f2=Float.parseFloat(e1.getText()+"");
+                if(add==true){
+                    e1.setText(f1+f2+"");
+                }
+                else if (sub==true){
+                    e1.setText(f1-f2+"");
+                }
+                else if(mul==true){
+                    e1.setText(f1*f2+"");
+                }
+                else if(div==true){
+                    e1.setText(f1/f2+"");
+                }
+            }
+        });
+    }
+}

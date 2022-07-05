@@ -1,0 +1,53 @@
+package com.example.myapplication_4mt19cs002001_lab3;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.regex.Pattern;
+
+public class MainActivity extends AppCompatActivity {
+    EditText un1,pwd1;
+    Button Signup;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        un1=findViewById(R.id.editTextUsername1);
+        pwd1=findViewById(R.id.editTextPassword1);
+        Signup=findViewById(R.id.Signup);
+        Signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String uname1=un1.getText().toString();
+                String password1=pwd1.getText().toString();
+                if(!validpwd(password1)){
+                    Toast.makeText(MainActivity.this,"Password does not match the rules",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                Intent in=new Intent(MainActivity.this,login.class);
+                in.putExtra("username",uname1);
+                in.putExtra("password",password1);
+                startActivity(in);
+            }
+        });
+    }
+    Pattern lcase=Pattern.compile("^.*[a-z].*$");
+    Pattern ucase=Pattern.compile("^.*[A-Z].*$");
+    Pattern digit=Pattern.compile("^.*[0-9].*$");
+    Pattern splchar=Pattern.compile("^.*[^a-zA-Z0-9].*$");
+    private Boolean validpwd(String pwd){
+        if (pwd.length()<8) return false;
+        if (!lcase.matcher(pwd).matches()) return false;
+        if (!ucase.matcher(pwd).matches()) return false;
+        if (!digit.matcher(pwd).matches()) return false;
+        if (!splchar.matcher(pwd).matches()) return false;
+        return true;
+    }
+}
